@@ -6,7 +6,7 @@ btnFrete.addEventListener("click", function(){
 
     let cep = document.querySelector("#cepDest").value
 
-    xhr.open("GET", `http://localhost:8080/calc_frete/${cep}`, true)
+    xhr.open("GET", `/calc_frete/${cep}`, true)
 
     xhr.onreadystatechange = function(){
         let response = xhr.responseText
@@ -18,5 +18,4 @@ btnFrete.addEventListener("click", function(){
         document.querySelector("#prazo").textContent = "Prazo estimado para entrega em até: " + response_frete_detalhe[2] + " dias úteis"
     }
     xhr.send()
-
 })
