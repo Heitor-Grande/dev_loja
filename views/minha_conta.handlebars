@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/views/components/css/minha_conta.css">
+    <title>Document</title>
+</head>
+    {{#each user}}
+<body>
+     <header>
+            <div id="login">
+                <p>{{senderName}}</p>
+                <a href="/minha_conta/{{token_user}}">MINHA CONTA</a>
+                <a href="/">SAIR</a>
+            </div>
+            <a href="/sem_filtro/{{token_user}}"><h3>NOME/IMAGEM LOJA</h3></a>
+
+            <form action="/app_pesquisa/{{token_user}}" method="post">
+                <input type="search" placeholder="Procure aqui :)" name="nome_produto">
+            </form>
+    </header>
+
+    <main>
+        <form action="/att_user/{{token_user}}" method="post" id="dados">
+            <button type="button" class="btn btn-primary" id="habilitar">HABILITAR EDIÇÃO</button>
+            <h2>MEUS DADOS</h2>
+            <p>NOME:</p>
+            <input type="text" name="senderName" id="senderName" value="{{senderName}}" class="editavel" disabled>
+            <p>CPF/CNPJ: </p>
+            <input type="text" name="senderCpfCnpj" id="cpfcnpj" value="{{senderCpfCnpj}}" class="editavel" disabled>
+            <p>TELEFONE: </p>
+            <input type="text" name="senderPhone" id="telefone" value="{{senderPhone}}" class="editavel" disabled>
+            <p>EMAIL:</p>
+            <input type="text" name="senderEmail" id="email" value="{{senderEmail}}" class="editavel" disabled>
+            <p>SENHA:</p>
+            <input type="password" name="pass" id="pass" value="{{pass}}" class="editavel" disabled>
+            <p>CONFIRMAR SENHA:</p>
+            <input type="password" id="pass_confirm" disabled class="editavel">
+            <h2>ENDEREÇO</h2>
+            <p>CEP:</p>
+            <input type="text" name="shippingAddressPostalCode" id="cep" value="{{shippingAddressPostalCode}}" class="editavel" disabled>
+            <p>RUA:</p>
+            <input type="text" name="shippingAddressStreet" id="rua" value="{{shippingAddressStreet}}" class="editavel" disabled>
+            <p>NUMERO:</p>
+            <input type="text" name="shippingAddressNumber" id="numero" value="{{shippingAddressNumber}}" class="editavel" disabled>
+            <p>COMPLEMENTO:</p>
+            <input type="text" name="shippingAddressComplement" id="complemento" value="{{shippingAddressComplement}}"class="editavel" disabled>
+            <p>BAIRRO:</p>
+            <input type="text" name="shippingAddressDistrict" id="bairro" value="{{shippingAddressDistrict}}" class="editavel" disabled>
+            <p>CIDADE:</p>
+            <input type="text" name="hippingAddressCity" id="cidade" value="{{hippingAddressCity}}" class="editavel" disabled>
+            <p>ESTADO:</p>
+            <select name="shippingAddressState" id="estado" class="editavel" disabled>
+                <option value="{{shippingAddressState}}">{{shippingAddressState}}</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RR">RR</option>
+                <option value="RO">RO</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+            </select>
+            <button id="bttnRegistrar" class="btn btn-primary" disabled>SALVAR EDIÇÃO</button>
+        </form>
+    </main>
+
+    <div id="carrinho">
+        <h3>MEU CARRINHO</h3>
+        {{#each ../carrinho}}
+            <div class="produto">
+                <img src="../uploads/{{img_produto}}" alt="">
+                <h4>{{nome_produto}}</h4>
+                <p>R${{preco_produto}}</p>
+                <p>{{produto_quantidade}}</p>
+                <a href="/delete_produto_car/{{id_carrinho}}/{{token_user}}">remover do carrinho</a>
+            </div>
+        {{/each}}
+
+        <div id="frete">
+        <p>Calcule o frete colocando seu CEP:</p>
+            <input type="hidden" name="peso" value="0.500">
+            <input type="text" name="cepDestino" value="{{shippingAddressPostalCode}}" id="cepDest">
+            <input type="submit" value="calcular" id="btnFrete">
+        <p id="frete_preco"></p>
+        <p id="prazo"></p>
+      </div>
+
+        <form method="post" target="pagseguro" action="/insert_pedido" id="myform">  
+          
+        <!-- Campos obrigatórios -->  
+        <input name="receiverEmail" type="hidden" value="heitorogrande2001@gmail.com" id="email_loja">  
+        <input name="currency" type="hidden" value="BRL" id="moeda">
+  
+        <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+
+        <input name="itemId1" type="hidden" value="999999" class="item_id">  
+        <input name="itemDescription1" type="hidden" value="Frete(PAC)" class="nome_produto">
+        <input name="itemAmount1" type="hidden" value=""  id="valor_frete">  
+        <input name="itemQuantity1" type="hidden" value="1" class="itemQuantity">
+
+        {{#each ../carrinho}}
+        <input name="itemId2" type="hidden" value="{{id_produto}}" class="item_id">  
+        <input name="itemDescription2" type="hidden" value="{{nome_produto}}" class="nome_produto">
+        <input name="itemAmount2" type="hidden" value="{{preco_produto}}" class="preco_produto">  
+        <input name="itemQuantity2" type="hidden" value="{{produto_quantidade}}" class="itemQuantity">
+        {{/each}}
+
+        <!-- Código de referência do pagamento no seu sistema (opcional) -->  
+        <input name="reference" type="hidden" value="" id="cod_pedido">
+        
+        <!-- Informações de frete (opcionais) -->  
+        <input name="shippingType" type="hidden" value="1">
+        <!-- <input name="itemShippingCost1" type="hidden" value="" id="valor_frete"> -->
+        <input name="shippingAddressPostalCode" type="hidden" value="{{shippingAddressPostalCode}}">  
+        <input name="shippingAddressStreet" type="hidden" value="{{shippingAddressStreet}}">  
+        <input name="shippingAddressNumber" type="hidden" value="{{shippingAddressNumber}}">  
+        <input name="shippingAddressComplement" type="hidden" value="{{shippingAddressComplement}}">  
+        <input name="shippingAddressDistrict" type="hidden" value="{{shippingAddressDistrict}}">  
+        <input name="shippingAddressCity" type="hidden" value="{{hippingAddressCity}}">  
+        <input name="shippingAddressState" type="hidden" value="{{shippingAddressState}}">
+        <input type="hidden" name="token_user" value="{{token_user}}">
+
+        <!-- Dados do comprador (opcionais) -->  
+        <input name="senderName" type="hidden" value="{{senderName}}">   
+        <input name="senderPhone" type="hidden" value="{{senderPhone}}">  
+        <input name="senderEmail" type="hidden" value="{{senderEmail}}">  
+
+        <!-- submit do form (obrigatório) -->  
+        <button class="btn btn-primary" id="comprar">COMPRAR</button>    
+</form>
+    </div>
+
+    <div id="pedidos">
+        <h3>MEUS PEDIDOS</h3>
+        {{#each ../pedido}}
+        <h5>Nº do pedido: {{reference}}</h5>
+        <p class="status_pedido">{{status_pedido}}</p>
+        {{/each}}
+    </div>
+</body>
+    {{/each}}
+    <script src="/views/components/js/frete.js"></script>
+    <script src="/views/components/js/validarUser.js"></script>
+    <script src="/views/components/js/minha_conta.js"></script>
+
+</html>

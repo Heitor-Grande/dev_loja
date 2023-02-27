@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/views/components/css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+            <div id="login">
+                <a href="/cad_user">CRIAR CONTA</a>
+                <a href="/login">ENTRAR</a>
+            </div>
+            <a href="/"><h3>NOME/IMAGEM LOJA</h3></a>
+            <form action="/app_pesquisa" method="post">
+                <input type="search" placeholder="Procure aqui :)" name="nome_produto">
+            </form>
+    </header>
+    
+    <div id="filtro">
+            <form action="/app_filtro" method="post">
+                    <select name="nome_categoria">
+                        {{#each categoria}}
+                        <option value="{{nome_categoria}}">{{nome_categoria}}</option>
+                        {{/each}}
+                    </select>
+                    <button class="btn btn-primary">APLICAR FILTRO</button>
+                    <a href="/">SEM FILTRO</a>
+            </form>
+    </div>
+
+    <main>
+            {{#each produto}}
+            <div class="produto">
+                    <img src="../uploads/{{imagem_produto}}" alt="">
+                    <input type="text" value="{{nome_produto}}" disabled>
+                    <input type="text" value="R${{preco_produto}}" id="preco" disabled>
+                    <a href="/comprar/{{id_produto}}" class="btn btn-primary">COMPRAR</a>
+            </div>
+            {{/each}}
+    </main>
+
+    <footer>
+        <p>E-mail: samaracgrande@gmail.com</p>
+    </footer>
+</body>
+</html>

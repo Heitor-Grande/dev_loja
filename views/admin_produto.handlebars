@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/views/components/css/admin_produto.css">
+    <link rel="stylesheet" href="/views/components/css/cad_produto.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>ADMIN NOME DA LOJA</h1>
+        <ul>
+            <li><a href="/cad_produto">CADASTRAR NOVO PRODUTO</a></li>
+            <li><a href="/categoria">CATEGORIAS</a></li>
+        </ul>
+    </header>
+    
+    <main>
+            {{#each produto}}
+            <div class="produto">
+                    <img src="/uploads/{{imagem_produto}}" alt="">
+                    <input type="text" value="{{nome_produto}}" disabled>
+                    <input type="text" value="R${{preco_produto}}" disabled>
+                    <input type="text" value="{{categoria_produto}}" disabled>
+                    <a href="/admin_produto_att/{{id_produto}}" class="btn btn-primary">EDITAR</a>
+                    <a href="/admin_produto_excluir/{{id_produto}}" class="btn btn-primary">EXCLUIR</a>
+            </div>
+            {{/each}}
+    </main>
+
+    <footer>
+        <p>ASSISTÊNCIA: (11)97471-8743</p>
+    </footer>
+</html>

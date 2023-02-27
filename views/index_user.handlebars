@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/views/components/css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+            {{#each user}}
+            <div id="login">
+                <p>{{senderName}}</p>
+                <a href="/minha_conta/{{token_user}}">MINHA CONTA</a>
+                <a href="/">SAIR</a>
+            </div>
+            <a href="/sem_filtro/{{token_user}}"><h3>NOME/IMAGEM LOJA</h3></a>
+            <form action="/app_pesquisa/{{token_user}}" method="post">
+                <input type="search" placeholder="Procure aqui :)" name="nome_produto">
+            </form>
+            {{/each}}
+    </header>
+    
+    <div id="filtro">
+            {{#each user}}
+            <form action="/app_filtro/{{token_user}}" method="post">
+            {{/each}}
+                    <select name="nome_categoria">
+                        {{#each categoria}}
+                        <option value="{{nome_categoria}}">{{nome_categoria}}</option>
+                        {{/each}}
+                    </select>
+                    <button class="btn btn-primary">APLICAR FILTRO</button>
+                    {{#each user}}
+                    <a href="/sem_filtro/{{token_user}}">SEM FILTRO</a>
+                    {{/each}}
+            </form>
+    </div>
+
+    <main>
+        <!--- conhecimento de looping importante inicio --->
+            {{#each produto}}
+            <div class="produto">
+                    <img src="../uploads/{{imagem_produto}}" alt="">
+                    <input type="text" value="{{nome_produto}}" disabled>
+                    <input type="text" value="R${{preco_produto}}" id="preco" disabled>
+                    {{#each ../user}}
+                    <a href="/comprar/{{../id_produto}}/{{token_user}}" class="btn btn-primary">COMPRAR</a>
+                    {{/each}}
+            </div>
+            {{/each}}
+            <!--- conhecimento de looping importante fim --->
+    </main>
+
+    <footer>
+        <p>E-mail: samaracgrande@gmail.com</p>
+    </footer>
+</body>
+</html>

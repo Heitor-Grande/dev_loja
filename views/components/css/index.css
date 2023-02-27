@@ -1,0 +1,260 @@
+body{
+    background-color: white;
+}
+header{
+    width: 100%;
+    height: 300px;
+    background-image: linear-gradient(to right, #D1EFF9, rgb(30, 168, 230));
+    border-width: 1px;
+}
+header h3{
+    display: inline-block;
+    color: white;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    padding-bottom: 0.5%;
+    border-bottom: solid;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header input{
+    width: 50%;
+    padding: 0.5%;
+    font-size: 125%;
+    outline: 0;
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+header img{
+    height: 225px;
+    margin-left: 5%;
+}
+#login{
+    padding: 1%;
+    text-align: center;
+    background-color: white;
+    width: 15%;
+    float: right;
+    display: inline-block;
+    margin-right: 5%;
+    margin-top: 2.5%;
+    border: solid;
+    border-width: 1px;
+    border-radius: 2%;
+}
+#login a{
+    display: block;
+    color: black;
+    margin-top: 10%;
+}
+#login p{
+    margin-top: 0%;
+    color: black;
+}
+
+
+
+#filtro{
+    margin-top: 2.5%;
+    padding: 2%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(235, 234, 234); 
+}
+#filtro select{
+} 
+#filtro option{
+}
+#filtro button{
+    margin-left: 1%;
+}
+main{
+    width: 95%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 1px;
+    border-radius: 2%;
+    padding: 2%;
+    background-color: rgb(235, 234, 234);
+}
+.produto{
+    width: 40%;
+    display: inline-block;
+    margin-top: 2.5%;
+    margin-left: 2.5%;
+    padding: 2%;
+    border-top: solid;
+    border-bottom: solid;
+    border-radius: 1%;
+    background-color: white;
+}
+.produto input{
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 2%;
+    text-transform: uppercase;
+    font-size: 120%;
+    border: none;
+}
+.produto img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 175px;
+    display: block;
+}
+.produto a{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+#preco{
+    font-size: 180%;
+    color: black;
+}
+footer{
+    padding: 2%;
+    margin-top: 2.5%;
+    background-image: linear-gradient(to right, #D1EFF9, rgb(30, 168, 230));
+    text-align: center; 
+    width: 100%;
+}
+footer p{
+}
+
+
+
+
+
+
+
+
+/*responsivo*/
+@media(min-width: 1440px){
+    header{
+        height: 450px;
+    }
+    header h3{
+        font-size: 400%;
+    }
+    header input{
+        font-size: 250%;
+    }
+    #login{
+        height: 300px;
+    }
+    #login a{
+        font-size: 200%;
+    }
+    #login p{
+
+    }
+    #filtro{
+
+    }
+    #filtro select{
+        font-size: 250%;
+        text-align: center;
+        height: 200px;
+    }
+    #filtro button{
+        font-size: 300%;
+        margin-right: 2%;
+    }
+    #filtro a{
+        font-size: 300%;
+    }
+    main{
+
+    }
+    .produto input{
+        font-size: 300%;
+    }
+    .produto img{
+        width: 400px;
+        height: 300px;
+    }
+    #preco{
+        font-size: 350%;
+    }
+    .produto a{
+        font-size: 300%;
+    }
+    footer p{
+        font-size: 250%;
+    }
+}
+
+
+@media(max-width: 425px){
+    header input{
+        width: 80%;
+        margin-top: 10%;
+    }
+    header img{
+    height: 190px;
+    margin-left: 5%;
+    }
+    #login{
+        width: 30%;
+        height: 125px;
+        padding: 2.5%;
+    }
+    #login p{
+        display: none;
+    }
+    #login a{
+        margin-top: 15%;
+    }
+    #filtro{
+        width: 100%;
+    }
+    #filtro select{
+        display: block;
+        margin-left: 2%;
+    }
+    #filtro a{
+        display: block;
+        margin-left: 2%;
+    }
+    #filtro button{
+        font-size: 90%;
+        display: block;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: 2%;
+    }
+    main{
+        border: none;
+        border-radius: 0%;
+        width: 100%;
+        margin-top: 15%;
+    }
+    .produto{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .produto img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
+        width: 280px;
+    }
+    footer{
+        margin-top: 15%;
+    }
+    footer p{
+        font-size: 110%;
+    }
+}

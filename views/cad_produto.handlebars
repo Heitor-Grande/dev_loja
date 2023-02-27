@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/views/components/css/admin_produto.css">
+    <link rel="stylesheet" href="/views/components/css/login.css">
+    <link rel="stylesheet" href="/views/components/css/cad_produto.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>ADMIN NOME DA LOJA</h1>
+        <ul>
+            <li><a href="/admin_produto">PRODUTOS CADASTRADOS</a></li>
+            <li><a href="/categoria">CATEGORIAS</a></li>
+        </ul>
+    </header>
+    
+    <form action="/cad_produto_set" method="post" enctype="multipart/form-data">
+            <p>PREENCHA TODOS OS CAMPOS PARA VALIDAR CORRETAMENTE O CADASTRO.</p>
+            <h3>NOME:</h3>
+            <input type="text" name="nome_produto">
+            <h3>VALOR:</h3>
+            <input type="text" name="preco_produto">
+            <h3>IMAGENS ILUSTRATIVAS(3):</h3>
+            <input type="file" name="fotos" multiple>
+            <h3>DESCRIÇÃO:</h3>
+            <input type="text" name="descricao_produto">
+            <h3>CATEGORIA:</h3>
+            <select name="categoria_produto" id="">
+                    {{#each categoria}}
+                        <option value="{{nome_categoria}}">{{nome_categoria}}</option>
+                    {{/each}}
+            </select>
+            <h3>TAMANHO(1):</h3>
+            <input type="text" name="tamanho_1">
+            <h3>TAMAHHO(2)</h3>
+            <input type="text" name="tamanho_2">
+            <h3>TAMANHO(3)</h3>
+            <input type="text" name="tamanho_3">
+            <button class="btn btn-primary" id="button_convert">CADASTRAR</button>
+    </form>
+
+    <footer>
+            <p>ASSISTÊNCIA: (11)97471-8743</p>
+    </footer>
+
+    <script src="/views/components/js/cad_produto.js"></script>
+</body>
+</html>

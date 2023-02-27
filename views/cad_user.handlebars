@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/views/components/css/cad_user.css">
+    <title>Document</title>
+</head>
+<body>
+       <!---https://m.pagseguro.uol.com.br/v2/guia-de-integracao/pagamento-via-html.html?_rnt=dd#v2-item-pagamento-via-html-formulario --->
+
+        <form action="/insert_user" method="post">
+            <h3>NOME:</h3>
+            <input type="text" name="senderName" id="senderName">
+            <h3>CPF/CNPJ: </h3>
+            <input type="text" name="senderCpfCnpj" id="cpfcnpj">
+            <h3>TELEFONE: </h3>
+            <input type="text" name="senderPhone" id="telefone">
+            <h3>EMAIL:</h3>
+            <input type="text" name="senderEmail" id="email">
+            <h3>SENHA:</h3>
+            <input type="password" name="pass" id="pass">
+            <h3>CONFIRMAR SENHA:</h3>
+            <input type="password" id="pass_confirm">
+            <h2>-- ENDEREÇO --</h2>
+            <h3>CEP:</h3>
+            <input type="text" name="shippingAddressPostalCode" id="cep">
+            <h3>RUA:</h3>
+            <input type="text" name="shippingAddressStreet" id="rua">
+            <h3>NUMERO:</h3>
+            <input type="text" name="shippingAddressNumber" id="numero">
+            <h3>COMPLEMENTO:</h3>
+            <input type="text" name="shippingAddressComplement" id="complemento">
+            <h3>BAIRRO:</h3>
+            <input type="text" name="shippingAddressDistrict" id="bairro">
+            <h3>CIDADE:</h3>
+            <input type="text" name="hippingAddressCity" id="cidade">
+            <h3>ESTADO:</h3>
+            <select name="shippingAddressState" id="estado">
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RR">RR</option>
+                <option value="RO">RO</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+            </select>
+            <button id="bttnRegistrar" class="btn btn-primary">CADASTRAR</button>
+        </form>
+
+</body>
+    <script src="/views/components/js/validarUser.js"></script>
+</html>

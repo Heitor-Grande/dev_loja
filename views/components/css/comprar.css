@@ -1,0 +1,101 @@
+body{
+    background-color: white;
+}
+.carousel{
+    display: inline-block;
+    margin-top: 2.5%;
+    width: 35%;
+}
+#desc{
+    width: 65%;
+    background-color: rgb(235, 234, 234);
+    padding: 2.5%;
+    margin-top: 2.5%;
+    display: inline-block;
+    float: right;
+}
+#desc h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+#desc h3{
+    color: brown;
+    margin-top: 2.5%;
+    font-size: 250%;
+    text-align: center;
+}
+#desc h4{
+    margin-top: 2.5%;
+    text-align: center;
+}
+#desc p{
+    text-align: center;
+}
+#desc button{
+    margin-top: 2.5%;
+    width: 75%;
+    display: block;
+    font-size: 175%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5%;
+}
+#quantidade{
+    text-align: center;
+}
+#quantidade button{
+    display: inline-block;
+    width: 5%;
+    font-size: larger;
+}
+#quantidade input{
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 175%;
+    width: 5%;
+    text-align: center;
+    display: inline-block;
+}
+#menos{
+    background-color: red;
+}
+#mais{
+    background-color: green;
+}
+form p{
+    margin-block-end: 0%;
+}
+#tamanho{
+    text-transform: uppercase;
+    font-size: larger;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#frete{
+    text-align: center;
+}
+
+@media(max-width: 425px){
+    .carousel{
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .carousel img{
+        width: 100%;
+        height: 300px;
+    }
+    #desc{
+        float: left;
+        display: block;
+        width: 100%;
+    }
+    #quantidade input{
+        width: 40%;
+    }
+    #quantidade button{
+        width: 20%;
+    }
+}

@@ -1,0 +1,210 @@
+body{
+    background-color: white;
+}
+header{
+    width: 100%;
+    height: 300px;
+    background-image: linear-gradient(to right, #D1EFF9, rgb(30, 168, 230));
+    border-width: 1px;
+}
+header h3{
+    display: inline-block;
+    color: white;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    padding-bottom: 0.5%;
+    border-bottom: solid;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+header input{
+    width: 50%;
+    padding: 0.5%;
+    font-size: 125%;
+    outline: 0;
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+header img{
+    height: 225px;
+}
+#login{
+    padding: 1%;
+    text-align: center;
+    background-color: white;
+    width: 15%;
+    float: right;
+    display: inline-block;
+    margin-right: 5%;
+    margin-top: 2.5%;
+    border: solid;
+    border-width: 1px;
+    border-radius: 2%;
+}
+#login a{
+    display: block;
+    color: black;
+    margin-top: 10%;
+}
+#login p{
+    margin-top: 0%;
+    color: black;
+}
+
+main{
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+    text-align: center;
+    width: 30%;
+    padding: 2.5%;
+    display: inline-block;
+    background-color: rgb(235, 234, 234);
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 1px;
+    border-radius: 2%;
+}
+main input{
+    text-align: center;
+    width: 40%;
+}
+main h3{
+    margin-top: 2.5%;
+    width: 40%;
+}
+main p{
+    margin-top: 0.5%;
+    margin-block-end: 0%;
+    display: inline-block;
+    width: 50%;
+    margin-top: 2.5%;
+}
+main h2{
+    margin-top: 5%;
+}
+main select{
+    width: 40%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+main button{
+    margin-top: 1.5%;
+}
+.btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#carrinho{
+    margin-right: 2.5%;
+    float: right;
+    width: 30%;
+    text-align: center;
+    margin-top: 2.5%;
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 1px;
+    border-radius: 2%;
+    padding: 2.5%;
+    display: inline-block;
+    background-color: rgb(235, 234, 234);
+}
+#carrinho h4{
+    text-transform: uppercase;
+}
+#pedidos{
+    margin-right: 2.5%;
+    float: right;
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    margin-top: 2.5%;
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 1px;
+    border-radius: 2%;
+    padding: 2.5%;
+    background-color: rgb(235, 234, 234);
+}
+#pedidos h4{
+    
+}
+#comprar{
+    margin-top: 5%;
+}
+.produto{
+    background-color: white;
+    padding: 2.5%;
+    margin-top: 2.5%;
+}
+.produto p{
+    font-size: 145%;
+}
+.produto a{
+    margin-top: 2.5%;
+}
+.produto img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 175px;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    padding: 2%;
+    margin-top: 2.5%;
+    background-color: #0D6EFD;
+    text-align: center; 
+    width: 100%;
+}
+footer p{
+    color: white;
+}
+
+
+
+
+@media(max-width: 425px){
+    #login{
+        width: 30%;
+        height: 125px;
+    }
+    header input{
+        width: 80%;
+        margin-top: 10%;
+    }
+    header img{
+        height: 190px;
+        margin-left: 5%;
+    }
+    #login p{
+        display: none;
+    }
+    main{
+        display: block;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #carrinho{
+        display: block;
+        width: 100%;
+    }
+    #pedidos{
+        display: block;
+        width: 100%;
+        margin-bottom: 20%;
+    }
+}

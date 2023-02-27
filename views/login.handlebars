@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/components/css/login.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/login_entrar" method="post">
+        <p>COLOQUE EMAIL E SENHA DA SUA CONTA</p>
+        <h4>EMAIL</h4>
+        <input type="text" name="senderEmail" id="senderEmail">
+        <h4>SENHA</h4>
+        <input type="password" name="pass" id="pass">
+        <p id="aviso">email ou senha incorretos</p>
+        <button class="btn btn-primary" id="btn">ENTRAR</button>
+        <a href="/pedirRec">ESQUECI MINHA SENHA</a>
+        <a href="/cad_user">CRIAR CONTA NOVA</a>
+    </form>
+</body>
+    <script src="/views/components/js/login.js"></script>
+</html>

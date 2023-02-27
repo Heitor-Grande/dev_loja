@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(30, 168, 230);
+}
+form{
+    background-color: white;
+    width: 50%;
+    border:solid;
+    border-width: 1px;
+    border-radius: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    padding: 1%;
+    text-align: center;
+}
+form p{
+
+}
+form h4{
+
+}
+#aviso{
+    color: red;
+    display: none;
+}
+form input{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-bottom: solid;
+    outline: 0;
+    display: block;
+    margin-bottom: 2.5%;
+    font-size: 120%;
+    border-width: 2px;
+    width: 60%;
+}
+form button{
+    margin-top: 2.5%;
+    width: 50%;
+}
+form a{
+    display: block;
+    margin-top: 5%;
+}
+
+
+@media(max-width: 425px){
+    form{
+        width: 90%;
+        height: 400px;
+    }
+    form input{
+        width: 80%;
+    }
+}

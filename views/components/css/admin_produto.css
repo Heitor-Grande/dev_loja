@@ -1,0 +1,60 @@
+header{
+    background-color: brown;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+header h1{
+    color: white;
+    margin-left: 5%;
+}
+header ul{
+    margin-top: 2%;
+}
+header li{
+    display: inline-block;
+    margin-left: 2.5%;
+}
+header a{
+    font-size: 120%;
+}
+.produto{
+    width: 20%;
+    display: inline-block;
+    margin-top: 2.5%;
+    margin-left: 2.5%;
+    padding: 2%;
+    border-top: solid;
+    border-bottom: solid;
+    border-radius: 1%;
+}
+.produto input{
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 2%;
+}
+.produto img{
+    width: 200px;
+    height: 175px;
+    display: block;
+}
+.produto a{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+
+@media(max-width: 425px){
+    .produto{
+        display: block;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .produto img{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
