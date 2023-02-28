@@ -1,5 +1,5 @@
 header{
-    background-color: brown;
+    background-color: rgb(30, 168, 230);
     padding-top: 2.5%;
     padding-bottom: 2.5%;
 }
@@ -15,10 +15,11 @@ header li{
     margin-left: 2.5%;
 }
 header a{
+    color: white;
     font-size: 120%;
 }
 footer{
-    background-color: brown;
+    background-color: rgb(30, 168, 230);
     padding: 2.5%;
     margin-top: 2.5%;
 }
