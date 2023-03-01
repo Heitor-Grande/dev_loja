@@ -98,10 +98,10 @@
         <!-- submit do form (obrigatório) -->  
         <button class="btn btn-primary" id="comprar">COMPRAR</button>
 </form>
-
+      <input type="hidden" value="{{../quantidade}}" id="quant">
+      <p>Quantidade em estoque: {{../quantidade}}</p>
       <div id="frete">
         <p>Calcule o frete colocando seu CEP:</p>
-        <input type="hidden" name="peso" value="0.500">
         <input type="text" name="cepDestino" value="{{shippingAddressPostalCode}}" id="cepDest">
         <input type="submit" value="calcular" id="btnFrete">
         <p id="frete_preco"></p>

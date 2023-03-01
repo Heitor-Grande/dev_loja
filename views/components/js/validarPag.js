@@ -15,6 +15,12 @@ let nome_produto = document.querySelector("#nome_produto").value
 const comprar = document.querySelector("#comprar")
 comprar.addEventListener("click", function(evento){
 
+    //validação de quantidade
+    const quantidade_estoque_string = document.querySelector("#quant").value
+    const item_quantidade_string = document.querySelector("#num_itens").value
+    const quantidade_estoque_number = parseInt(quantidade_estoque_string)
+    const item_quantidade_number = parseInt(item_quantidade_string)
+
     //att nome produto
     let tamanho = document.querySelector("#tamanho").value
     nome_produto = nome_produto + " " + tamanho
@@ -36,13 +42,20 @@ comprar.addEventListener("click", function(evento){
     else if(frete > 10){
         if(email_loja_v === email_loja && moeda_v === moeda && item_id_v === item_id 
             && preco_produto_v === preco_produto){
-            setTimeout(function(){
-                let form = document.querySelector("#myform")
-                //form.action = "/insert_pedido"
-                //HTMLFormElement.prototype.submit.call(form)
-                form.action = "https://pagseguro.uol.com.br/v2/checkout/payment.html"
-                HTMLFormElement.prototype.submit.call(form)
-            }, 500)
+
+            if(quantidade_estoque_number >= item_quantidade_number){
+                    setTimeout(function(){
+                        let form = document.querySelector("#myform")
+                        //form.action = "/insert_pedido"
+                        //HTMLFormElement.prototype.submit.call(form)
+                        form.action = "https://pagseguro.uol.com.br/v2/checkout/payment.html"
+                        HTMLFormElement.prototype.submit.call(form)
+                    }, 500)
+            }
+            else{
+                evento.preventDefault()
+                alert("quantidade não existente no estoque atual.")
+            }
         }
         else{
             evento.preventDefault()

@@ -61,7 +61,7 @@ router.get("/user_entrar/:token_user", function(req, res){
 }) 
     //url principal
 router.get("/", function(req, res){
-    database.all(`select * from produto`, function(erro, produto){
+    database.all(`select * from produto where quantidade >= 1`, function(erro, produto){
         if(erro){
             console.log("erro select index: " + erro)
             res.send(erro)
@@ -77,7 +77,8 @@ router.get("/", function(req, res){
     //filtro index
 router.post("/app_filtro", function(req, res){
         let nome_categoria = req.body.nome_categoria
-        database.all(`select * from produto where categoria_produto = "${nome_categoria}"`, function(erro, produto){
+        database.all(`select * from produto where categoria_produto = "${nome_categoria}" and quantidade >= 1`, 
+        function(erro, produto){
             if(erro){
                 res.send(erro)
             }
@@ -93,7 +94,7 @@ router.post("/app_filtro", function(req, res){
     //app_pesquisa(search)
 router.post("/app_pesquisa", function(req, res){
         let nome_produto = req.body.nome_produto
-        database.all(`select * from produto where nome_produto like "%${nome_produto}%"`, function(erro, produto){
+        database.all(`select * from produto where nome_produto like "%${nome_produto}%" and quantidade >= 1`, function(erro, produto){
             if(erro){
                 res.send(erro)
             }
@@ -111,7 +112,8 @@ router.post("/app_filtro/:token_user", function(req, res){
     let token_user = req.params.token_user
 
     let nome_categoria = req.body.nome_categoria
-    database.all(`select * from produto where categoria_produto = "${nome_categoria}"`, function(erro, produto){
+    database.all(`select * from produto where categoria_produto = "${nome_categoria}" and quantidade >= 1`, 
+    function(erro, produto){
         if(erro){
             res.send(erro)
         }
@@ -135,7 +137,7 @@ router.get("/sem_filtro/:token_user", function(req, res){
             res.send(erro)
         }
         else if(user){
-            database.all(`select * from produto`, function(erro, produto){
+            database.all(`select * from produto where quantidade >= 1`, function(erro, produto){
                 if(erro){
                     res.send(erro)
                 }
@@ -159,7 +161,7 @@ router.post("/app_pesquisa/:token_user", function(req, res){
         let token_user = req.params.token_user
     
         let nome_produto = req.body.nome_produto
-        database.all(`select * from produto where nome_produto like "%${nome_produto}%"`, function(erro, produto){
+        database.all(`select * from produto where nome_produto like "%${nome_produto}%" and quantidade >= 1`, function(erro, produto){
             if(erro){
                 res.send(erro)
             }
@@ -220,12 +222,14 @@ router.post("/cad_produto_set", upload.array("fotos", 3), function(req, res){
     let tamanho_1 = req.body.tamanho_1
     let tamanho_2 = req.body.tamanho_2
     let tamanho_3 = req.body.tamanho_3
+
+    let quantidade = req.body.quantidade
            
     database.run(`insert into produto (nome_produto, preco_produto, imagem_produto, imagem_produto_s, 
-        imagem_produto_t, descricao_produto, categoria_produto, tamanho_1, tamanho_2, tamanho_3) 
+        imagem_produto_t, descricao_produto, categoria_produto, tamanho_1, tamanho_2, tamanho_3, quantidade) 
                     values("${nome_produto}", "${preco_produto}", "${img_1}", 
                     "${img_2}", "${img_3}", "${descricao_produto}", "${categoria_produto}", 
-                    "${tamanho_1}", "${tamanho_2}", "${tamanho_3}")`, 
+                    "${tamanho_1}", "${tamanho_2}", "${tamanho_3}", "${quantidade}")`, 
                     function(erro){
                         if(erro){
                             console.log("erro ao fazer insert(produto): " + erro)
@@ -334,12 +338,14 @@ router.post("/admin_produto_set_update/:id", upload.array("fotos", 3) , function
     let tamanho_2 = req.body.tamanho_2
     let tamanho_3 = req.body.tamanho_3
 
+    let quantidade = req.body.quantidade
+
     database.run(`update produto set nome_produto = 
     "${nome_produto}", preco_produto = "${preco_produto}", 
     imagem_produto = "${img_1}", imagem_produto_s = "${img_2}", 
     imagem_produto_t = "${img_3}", descricao_produto = "${descricao_produto}", categoria_produto = "${categoria_produto}",
-    id_produto = "${id_produto}", tamanho_1 = "${tamanho_1}", tamanho_2 = "${tamanho_2}", tamanho_3 = "${tamanho_3}"
-     where id_produto = "${id_produto}"`, 
+    id_produto = "${id_produto}", tamanho_1 = "${tamanho_1}", tamanho_2 = "${tamanho_2}", tamanho_3 = "${tamanho_3}",
+    quantidade = "${quantidade}" where id_produto = "${id_produto}"`, 
      function(erro){
         if(erro){
             console.log("erro ao fazer upload(produto): " + erro)
