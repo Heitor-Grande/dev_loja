@@ -155,7 +155,7 @@
     <div id="pedidos">
         <h3>MEUS PEDIDOS</h3>
         {{#each ../pedido}}
-        <form action="/notificacao" method="get">
+        <form action="/notificacao" method="post">
         <h5>Nº do pedido: {{reference}}</h5>
         <p class="status_pedido">{{status_pedido}}</p>
         <button>ver status</button>
