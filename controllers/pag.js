@@ -21,4 +21,9 @@ pag.post("/insert_pedido", function(req, res){
     })
 })
 
+//notificação url pag
+pag.get("/notificacao", function(req, res){
+    res.send()
+})
+
 module.exports = pag 
