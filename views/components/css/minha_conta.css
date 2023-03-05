@@ -151,7 +151,14 @@ main button{
     height: 175px;
     display: block;
 }
-
+#pp{
+    margin-block-end: 0%;
+}
+#valor_total{
+    text-align: center;
+    border: none;
+    color: brown;
+}
 
 
 

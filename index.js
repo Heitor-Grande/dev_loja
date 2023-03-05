@@ -119,8 +119,12 @@ app.post("/rec_senha", recSenha)
 //pag
 const pag = require("./controllers/pag")
 app.post("/insert_pedido", pag)
-
-
+app.post("/notificacao", pag)
+app.get("/detalhes/produtos/:token_user/:reference", pag)
+app.get("/meusPedidos/admin", pag)
+app.get("/MyAdmin/:tk/:reference", pag)
+app.post("/pedido/:token_user/:reference", pag)
 //frete
 const frete = require("./controllers/frete")
 app.get("/calc_frete/:cep", frete)
+

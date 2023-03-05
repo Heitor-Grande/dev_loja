@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/components/css/pedido_detalhes.css">
+    <title>Document</title>
+</head>
+<body>
+        <main>
+            <h2>Detalhes:</h2>
+            {{#each pedido_detalhes}}
+                    <p>Nome do produto: {{item_pedido}}</p>
+                    <p>Preço por unidade: R${{preco_item}}</p>
+                    <p>Unidades: {{quantidade_item}}</p>
+            {{/each}}
+            <h2>Atualizar:</h2>
+            {{#each pedido}}
+                <h4>Status do pedido:</h4>
+                <form action="/pedido/{{token_user}}/{{reference}}" method="post">
+                    <select name="status_pedido">
+                    <option value="{{status_pedido}}">{{status_pedido}}</option>
+                    <option value="Aguardando liberação">Aguardando liberação</option>
+                    <option value="A caminho">A caminho</option>
+                    <option value="Entregue">Entregue</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Reembolsado">Reembolsado</option>
+                </select>
+                    <button class="btn btn-primary">Atualizar</button>
+                </form>
+            {{/each}}
+        </main>
+</body>
+</html>

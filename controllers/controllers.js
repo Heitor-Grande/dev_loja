@@ -566,6 +566,7 @@ router.post("/insert_carrinho/:token_user", function(req, res){
     values("${nome_produto + ' ' + tamanho} ", "${preco_produto}", "${id_produto}", "${token_user}", "${produto_quantidade}", "${img_produto}")`, function(erro){
         if(erro){
             res.send(erro)
+            console.log(erro)
         }
         else{
             res.redirect("/minha_conta/" + token_user + "")

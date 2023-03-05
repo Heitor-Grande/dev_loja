@@ -97,6 +97,8 @@
                 <a href="/delete_produto_car/{{id_carrinho}}/{{token_user}}">remover do carrinho</a>
             </div>
         {{/each}}
+        <p id="pp">Valor total do carrinho:</p>
+        <input type="text" value="" id="valor_total" disabled>
 
         <div id="frete">
         <p>Calcule o frete colocando seu CEP:</p>
@@ -114,17 +116,23 @@
         <input name="currency" type="hidden" value="BRL" id="moeda">
   
         <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
-
         <input name="itemId1" type="hidden" value="999999" class="item_id">  
         <input name="itemDescription1" type="hidden" value="Frete(PAC)" class="nome_produto">
-        <input name="itemAmount1" type="hidden" value=""  id="valor_frete">  
+        <input name="itemAmount1" type="hidden" value=""  id="valor_frete" class="preco_produto">  
         <input name="itemQuantity1" type="hidden" value="1" class="itemQuantity">
 
         {{#each ../carrinho}}
         <input name="itemId2" type="hidden" value="{{id_produto}}" class="item_id">  
         <input name="itemDescription2" type="hidden" value="{{nome_produto}}" class="nome_produto">
-        <input name="itemAmount2" type="hidden" value="{{preco_produto}}" class="preco_produto">  
+        <input name="itemAmount2" type="hidden" value="{{preco_produto}}" class="preco_produto">
         <input name="itemQuantity2" type="hidden" value="{{produto_quantidade}}" class="itemQuantity">
+        {{/each}}
+
+        {{#each ../carrinho}}
+        <input name="itemId" type="hidden" value="{{id_produto}}">  
+        <input name="itemDescription" type="hidden" value="{{nome_produto}}">
+        <input name="itemAmount" type="hidden" value="{{preco_produto}}">
+        <input name="itemQuantity" type="hidden" value="{{produto_quantidade}}">
         {{/each}}
 
         <!-- Código de referência do pagamento no seu sistema (opcional) -->  
@@ -148,6 +156,8 @@
         <input name="senderEmail" type="hidden" value="{{senderEmail}}">  
 
         <!-- submit do form (obrigatório) -->  
+        <input type="hidden" name="quantidade_total_itens" value="" id="quantidade_total_itens">
+        <input type="hidden" value="" id="valor_total_back" name="valor_total">
         <button class="btn btn-primary" id="comprar">COMPRAR</button>    
 </form>
     </div>
@@ -155,10 +165,10 @@
     <div id="pedidos">
         <h3>MEUS PEDIDOS</h3>
         {{#each ../pedido}}
-        <form action="/notificacao" method="post">
         <h5>Nº do pedido: {{reference}}</h5>
+        <p>Data do pedido: {{data_pedido}}</p>
         <p class="status_pedido">{{status_pedido}}</p>
-        <button>ver status</button>
+        <a href="/detalhes/produtos/{{token_user}}/{{reference}}">Ver detalhes do pedido</a>
         </form>
         {{/each}}
     </div>
