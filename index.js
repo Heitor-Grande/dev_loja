@@ -66,17 +66,20 @@ app.post("/app_pesquisa", router)
 app.post("/app_pesquisa/:token_user", router)
 
 //cad_produto _ tela
-app.get("/cad_produto", router)
+app.get("/cad_produto/:senha", router)
 
     //crud - produto(inicio)
+app.get("/admin/entrar", router)
+app.post("/logar/admin", router)
+
         //insert
 app.post("/cad_produto_set", router)
         //select
-app.get("/admin_produto", router)
+app.get("/admin_produto/:senha", router)
         //delete
 app.get("/admin_produto_excluir/:id", router)
         //select -> update
-app.get("/admin_produto_att/:id", router)
+app.get("/admin_produto_att/:id/:senha", router)
         //update
 app.post("/admin_produto_set_update/:id", router)
     //crud - produto(fim)
@@ -92,7 +95,7 @@ app.post("/att_user/:token_user", router)
 
     //crud - categoria(inicio)
         //select
-app.get("/categoria", router)
+app.get("/categoria/:senha", router)
         //update
 app.post("/att_categoria/:id_categoria", router)
         //delete
@@ -121,7 +124,8 @@ const pag = require("./controllers/pag")
 app.post("/insert_pedido", pag)
 app.post("/notificacao", pag)
 app.get("/detalhes/produtos/:token_user/:reference", pag)
-app.get("/meusPedidos/admin", pag)
+
+app.get("/meusPedidos/admin/:senha", pag)
 app.get("/MyAdmin/:tk/:reference", pag)
 app.post("/pedido/:token_user/:reference", pag)
 //frete

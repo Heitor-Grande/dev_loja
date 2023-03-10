@@ -72,13 +72,25 @@ pag.get("/detalhes/produtos/:token_user/:reference", function(req, res){
 })
 
 
-pag.get("/meusPedidos/admin", function(req, res){
-    database.all(`select * from pedido`, function(erro, pedido){
+pag.get("/meusPedidos/admin/:senha", function(req, res){
+    let senha = req.params.senha
+
+    database.all(`select * from admin where senha = "${senha}"`, function(erro, admin){
         if(erro){
-            req.send(erro)
+            res.send(erro)
+        }
+        else if(admin != ""){
+            database.all(`select * from pedido`, function(erro, pedido){
+                if(erro){
+                    req.send(erro)
+                }
+                else{
+                    res.render("meus_pedidos", {pedido})
+                }
+            })
         }
         else{
-            res.render("meus_pedidos", {pedido})
+            res.send("senha incorreta")
         }
     })
 })

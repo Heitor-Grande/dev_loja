@@ -177,28 +177,77 @@ router.post("/app_pesquisa/:token_user", function(req, res){
     })
 
     //tela cadastrar produto
-router.get("/cad_produto", function(req, res){
-    database.all(`select * from categoria`, function(erro, categoria){
+router.get("/cad_produto/:senha", function(req, res){
+    let senha = req.params.senha
+
+    database.all(`select * from admin where senha = "${senha}"`, function(erro, admin){
         if(erro){
             res.send(erro)
         }
-        else if(categoria){
-            res.render("cad_produto", {categoria})
+        else if(admin != ""){
+            database.all(`select * from categoria`, function(erro, categoria){
+                if(erro){
+                    res.send(erro)
+                }
+                else if(categoria){
+                    res.render("cad_produto", {categoria, admin})
+                }
+            })
+        }
+        else{
+            res.send("senha incorreta")
         }
     })
 })
 
         //(crud-produto) ---- inicio
-router.get("/admin_produto", function(req, res){
-    //select todos produtos
-    database.all(`select * from produto`, function(erro, produto){
+router.get("/admin/entrar", function(req, res){
+    res.render("admin")
+})
+
+router.post("/logar/admin", function(req, res){
+    let admin = req.body.admin
+    let senha = req.body.senha
+    
+    database.all(`select * from admin where admin = "${admin}" and senha = "${senha}"`, function(erro, admin){
         if(erro){
-            console.log("erro ao fazer select(produto): " + erro)
+            res.send(erro)
+            console.log(erro)
+        }
+        else if(admin != ""){
+            console.log(admin)
+            res.redirect(`/admin_produto/${senha}`)
+        }
+        else{
+            res.send("Usuario e senha não existem no banco de dados")
+            console.log(admin)
+        }
+    })
+
+})
+
+router.get("/admin_produto/:senha", function(req, res){
+    //select todos produtos
+    let senha = req.params.senha
+
+    database.all(`select * from admin where senha = "${senha}"`, function(erro, admin){
+        if(erro){
             res.send(erro)
         }
-        else if(produto){
-            console.log("sucesso ao fazer select(produto): " + produto)
-            res.render("admin_produto", {produto})
+        else if(admin != ""){
+            database.all(`select * from produto`, function(erro, produto){
+                if(erro){
+                    console.log("erro ao fazer select(produto): " + erro)
+                    res.send(erro)
+                }
+                else if(produto){
+                    console.log("sucesso ao fazer select(produto): " + produto)
+                    res.render("admin_produto", {produto, admin})
+                }
+            })
+        }
+        else{
+            res.send("senha incorreta")
         }
     })
 })
@@ -357,19 +406,30 @@ router.post("/admin_produto_set_update/:id", upload.array("fotos", 3) , function
     })
 })
 
-router.get("/admin_produto_att/:id", function(req, res){
+router.get("/admin_produto_att/:id/:senha", function(req, res){
     //puxar produtos para att na pagina
     const id_produto = req.params.id
-    
-    database.all(`select * from produto where id_produto="${id_produto}"`, function(erro, produto){
+    let senha = req.params.senha
+
+    database.all(`select * from admin where senha = "${senha}"`, function(erro, admin){
         if(erro){
-            console.log("erro ao fazer select_att(produto): " + erro)
+            res.send(erro)
         }
-        else if(produto){
-            database.all(`select * from categoria`, function(erro, categoria){
-                console.log("sucesso ao fazer select_att: " + produto)
-                res.render("cad_produto_att", {produto, categoria})
+        else if(admin != ""){
+            database.all(`select * from produto where id_produto="${id_produto}"`, function(erro, produto){
+                if(erro){
+                    console.log("erro ao fazer select_att(produto): " + erro)
+                }
+                else if(produto){
+                    database.all(`select * from categoria`, function(erro, categoria){
+                        console.log("sucesso ao fazer select_att: " + produto)
+                        res.render("cad_produto_att", {produto, categoria, admin})
+                    })
+                }
             })
+        }
+        else{
+            res.send("senha incorreta")
         }
     })
 })
@@ -491,13 +551,25 @@ router.post("/att_user/:token_user", function(req, res){
 
     //(crud-categoria) ----  inicio
     //select
-router.get("/categoria", function(req, res){
-    database.all(`select * from categoria`, function(erro, categoria){
+router.get("/categoria/:senha", function(req, res){
+    let senha = req.params.senha
+
+    database.all(`select * from admin where senha = "${senha}"`, function(erro, admin){
         if(erro){
             res.send(erro)
         }
+        else if(admin != ""){
+            database.all(`select * from categoria`, function(erro, categoria){
+                if(erro){
+                    res.send(erro)
+                }
+                else{
+                    res.render("categoria", {categoria, admin})
+                }
+            })
+        }
         else{
-            res.render("categoria", {categoria})
+            res.send("senha incorreta")
         }
     })
 })

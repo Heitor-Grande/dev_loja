@@ -13,10 +13,12 @@
     <header>
         <h1>ADMIN NOME DA LOJA</h1>
         <ul>
-            <li><a href="/cad_produto">CADASTRAR NOVO PRODUTO</a></li>
-            <li><a href="/categoria">CATEGORIAS</a></li>
+            {{#each admin}}
+            <li><a href="/cad_produto/{{senha}}">CADASTRAR NOVO PRODUTO</a></li>
+            <li><a href="/categoria/{{senha}}">CATEGORIAS</a></li>
             <li><a href="/models/teste.db">FAZER BACKUP</a></li>
-            <li><a href="/meusPedidos/admin">MEUS PEDIDOS</a></li>
+            <li><a href="/meusPedidos/admin/{{senha}}">MEUS PEDIDOS</a></li>
+            {{/each}}
         </ul>
     </header>
     
@@ -27,7 +29,9 @@
                     <input type="text" value="{{nome_produto}}" disabled>
                     <input type="text" value="R${{preco_produto}}" disabled>
                     <input type="text" value="{{categoria_produto}}" disabled>
-                    <a href="/admin_produto_att/{{id_produto}}" class="btn btn-primary">EDITAR</a>
+                    {{#each ../admin}}
+                    <a href="/admin_produto_att/{{../id_produto}}/{{senha}}" class="btn btn-primary">EDITAR</a>
+                    {{/each}}
                     <a href="/admin_produto_excluir/{{id_produto}}" class="btn btn-primary">EXCLUIR</a>
             </div>
             {{/each}}

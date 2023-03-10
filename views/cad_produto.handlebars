@@ -14,9 +14,11 @@
     <header>
         <h1>ADMIN NOME DA LOJA</h1>
         <ul>
-            <li><a href="/admin_produto">PRODUTOS CADASTRADOS</a></li>
-            <li><a href="/categoria">CATEGORIAS</a></li>
+            {{#each admin}}
+            <li><a href="/admin_produto/{{senha}}">PRODUTOS CADASTRADOS</a></li>
+            <li><a href="/categoria/{{senha}}">CATEGORIAS</a></li>
             <li><a href="/models/teste.db">FAZER BACKUP</a></li>
+            {{/each}}
         </ul>
     </header>
     
