@@ -57,7 +57,7 @@
     </div>
  
     <!-- Declaração do formulário -->  
-<form method="post" target="pagseguro" action="/insert_pedido" id="myform">  
+<form method="post" target="pagseguro" action="/vender/user" id="myform">  
           
         <!-- Campos obrigatórios -->  
         <input name="receiverEmail" type="hidden" value="heitorogrande2001@gmail.com" id="email_loja">  
@@ -65,7 +65,7 @@
   
         <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
         <input name="itemId1" type="hidden" value="999999" class="item_id">  
-        <input name="itemDescription1" type="hidden" value="Frete(PAC)" class="nome_produto">
+        <input name="itemDescription1" type="hidden" value="Frete" class="nome_produto">
         <input name="itemAmount1" type="hidden" value="" class="preco_produto" id="valor_frete">  
         <input name="itemQuantity1" type="hidden" value="1" class="itemQuantity">
 
@@ -73,6 +73,11 @@
         <input name="itemDescription2" type="hidden" value="{{nome_produto}}" id="nome_produto"><!--- nome no meu sistema é descrição para o pagseguro --->
         <input name="itemAmount2" type="hidden" value="{{preco_produto}}" id="preco_produto">  
         <input name="itemQuantity2" type="hidden" value="1" id="item_quantidade">
+
+        <input name="itemId" type="hidden" value="{{id_produto}}" id="item_id">  
+        <input name="itemDescription" type="hidden" value="{{nome_produto}}" id="nome_produto"><!--- nome no meu sistema é descrição para o pagseguro --->
+        <input name="itemAmount" type="hidden" value="{{preco_produto}}" id="preco_produto">  
+        <input name="itemQuantity" type="hidden" value="1" id="item_quantidade">
 
         {{#each ../user}}          
         <!-- Informações de frete (opcionais) -->  
@@ -95,11 +100,15 @@
         <!-- Código de referência do pagamento no seu sistema (opcional) -->  
         <input name="reference" type="hidden" value="" id="cod_pedido">
   
-        <!-- submit do form (obrigatório) -->  
+        <!-- submit do form (obrigatório) --> 
+        <input type="hidden" name="quantidade_total_itens" value="" id="quantidade_total_itens">
+        <input type="hidden" value="" id="valor_total_back" name="valor_total">
         <button class="btn btn-primary" id="comprar">COMPRAR</button>
 </form>
+
       <input type="hidden" value="{{../quantidade}}" id="quant">
       <p>Quantidade em estoque: {{../quantidade}}</p>
+
       <div id="frete">
         <p>Calcule o frete colocando seu CEP:</p>
         <input type="text" name="cepDestino" value="{{shippingAddressPostalCode}}" id="cepDest">

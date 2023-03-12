@@ -8,12 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-        <main>
+        <main class="ppdido">
             <h2>Detalhes:</h2>
             {{#each pedido_detalhes}}
-                    <p>Nome do produto: {{item_pedido}}</p>
-                    <p>Preço por unidade: R${{preco_item}}</p>
-                    <p>Unidades: {{quantidade_item}}</p>
+                <p>Nome do produto: {{item_pedido}}</p>
+                <p>Preço por unidade: R${{preco_item}}</p>
+                <p>Vendido: {{quantidade_item}}</p>
+                <a href="/att/estoque/{{id_item}}/{{quantidade_item}}">Atualizar estoque</a>
             {{/each}}
             <h2>Atualizar:</h2>
             {{#each pedido}}
@@ -22,6 +23,7 @@
                     <select name="status_pedido">
                     <option value="{{status_pedido}}">{{status_pedido}}</option>
                     <option value="Aguardando liberação">Aguardando liberação</option>
+                    <option value="Aguardando envio">Aguardando envio</option>
                     <option value="A caminho">A caminho</option>
                     <option value="Entregue">Entregue</option>
                     <option value="Cancelado">Cancelado</option>

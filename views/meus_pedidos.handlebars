@@ -10,14 +10,17 @@
 <body>
         <main>
             {{#each pedido}}
-            <h2>Detalhes do pedido {{reference}}</h2>
-            <p>Nome do comprador: {{nome_cliente}}</p>
-            <p>Telefone para contato: {{contato}}</p>
-            <p>Status do pedido: {{status_pedido}}</p>
-            <p>Pedido realizado na data: {{data_pedido}}</p>
-            <p>Total do pedido: R${{valor_total}}</p>
-            <a href="/MyAdmin/{{token_user}}/{{reference}}">Atualizar pedido</a>
+            <div class="ppdido">
+                <h2>Detalhes do pedido {{reference}}</h2>
+                <p>Nome do comprador: {{nome_cliente}}</p>
+                <p>Telefone para contato: {{contato}}</p>
+                <p class="statusPedido">{{status_pedido}}</p>
+                <p>Pedido realizado na data: {{data_pedido}}</p>
+                <p>Total do pedido: R${{valor_total}}</p>
+                <a href="/MyAdmin/{{token_user}}/{{reference}}">Atualizar pedido</a>
+            </div>
             {{/each}}
         </main>
 </body>
+    <script src="/views/components/js/pedido.js"></script>
 </html>

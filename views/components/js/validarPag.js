@@ -29,6 +29,13 @@ comprar.addEventListener("click", function(evento){
 
     //pegar frete
     let frete = document.querySelector("#valor_frete").value
+
+    //quantidade total
+    document.querySelector("#quantidade_total_itens").value = item_quantidade_number
+
+    //valor total
+    document.querySelector("#valor_total_back").value = (item_quantidade_number * preco_produto) + parseFloat(frete)
+
     //dados form
     const email_loja_v = document.querySelector("#email_loja").value
     const moeda_v = document.querySelector("#moeda").value
@@ -84,3 +91,4 @@ add_carrinho.addEventListener("click", function(evento){
 })
 
 
+//para venda detalhes

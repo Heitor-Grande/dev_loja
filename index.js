@@ -128,7 +128,8 @@ app.get("/detalhes/produtos/:token_user/:reference", pag)
 app.get("/meusPedidos/admin/:senha", pag)
 app.get("/MyAdmin/:tk/:reference", pag)
 app.post("/pedido/:token_user/:reference", pag)
+app.get("/att/estoque/:id_item/:vendido", pag)
+app.post("/vender/user", pag)
 //frete
 const frete = require("./controllers/frete")
 app.get("/calc_frete/:cep", frete)
-
