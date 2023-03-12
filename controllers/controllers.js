@@ -252,12 +252,14 @@ router.get("/admin_produto/:senha", function(req, res){
     })
 })
     
-router.post("/cad_produto_set", upload.array("fotos", 3), function(req, res){
+router.post("/cad_produto_set/:senha", upload.array("fotos", 3), function(req, res){
     //cad_produto
     let nome_produto = req.body.nome_produto
     console.log("nome produto criado: " + nome_produto)
     let preco_produto = req.body.preco_produto
     console.log("preço do produto criado: " + preco_produto)
+
+    let senha = req.params.senha
 
     let img_1 = req.files[0].filename
     let img_2 = req.files[1].filename
@@ -286,14 +288,15 @@ router.post("/cad_produto_set", upload.array("fotos", 3), function(req, res){
                         }
                         else{
                             console.log("sucesso ao fazer insert(produto)")
-                            res.redirect("/admin_produto")
+                            res.redirect(`/admin_produto/${senha}`)
                         }
                     })
 })
 
-router.get("/admin_produto_excluir/:id", function(req, res){
+router.get("/admin_produto_excluir/:id/:senha", function(req, res){
     //delete produto 
     const id_produto = req.params.id
+    const senha = req.params.senha
 
     //deletar imagens produto
     database.all(`select imagem_produto, imagem_produto_s, imagem_produto_t from produto 
@@ -330,13 +333,14 @@ router.get("/admin_produto_excluir/:id", function(req, res){
             res.send(erro)
         }
         else{
-            res.redirect("/admin_produto")
+            res.redirect("/admin_produto/:senha")
         }
     })
 })
 
-router.post("/admin_produto_set_update/:id", upload.array("fotos", 3) , function(req, res){
+router.post("/admin_produto_set_update/:id/:senha", upload.array("fotos", 3) , function(req, res){
 
+    let senha = req.params.senha
     let id_produto = req.params.id
 
     let img_1 = req.files[0].filename
@@ -401,7 +405,7 @@ router.post("/admin_produto_set_update/:id", upload.array("fotos", 3) , function
             res.send(erro)
         }
         else{
-            res.redirect("/admin_produto")
+            res.redirect(`/admin_produto/${senha}`)
         }
     })
 })
@@ -574,10 +578,12 @@ router.get("/categoria/:senha", function(req, res){
     })
 })
     //update
-router.post("/att_categoria/:id_categoria", function(req, res){
+router.post("/att_categoria/:id_categoria/:senha", function(req, res){
         let id_categoria = req.params.id_categoria
         let categoria_antiga = req.body.categoria_antiga
         let nome_categoria = req.body.nome_categoria
+        let senha = req.params.senha
+
         database.run(`update categoria set nome_categoria = '${nome_categoria}' where id_categoria = '${id_categoria}'`, function(erro){
             if(erro){
                 res.send(erro)
@@ -590,34 +596,38 @@ router.post("/att_categoria/:id_categoria", function(req, res){
                     else{
                         database.run(`update produto set categoria_produto = "${nome_categoria}" 
                         where categoria_produto = "${categoria_antiga}"`)
-                        res.redirect("/categoria")
+                        res.redirect(`/categoria/${senha}`)
                     }
                 })
             }
         })
 })
     //delete
-router.get("/excluir_categoria/:id_categoria", function(req, res){
+router.get("/excluir_categoria/:id_categoria/:senha", function(req, res){
         let id_categoria = req.params.id_categoria
+        let senha = req.params.senha
+
+        
         database.run(`delete from categoria where id_categoria = '${id_categoria}'`, function(erro){
             if(erro){
                 res.send(erro)
             }
             else{
-                res.redirect("/categoria")
+                res.redirect(`/categoria/${senha}`)
             }
         })
 })
     //insert
-router.post("/add_categoria" , function(req, res){
+router.post("/add_categoria/:senha" , function(req, res){
     let nome_categoria = req.body.nome_categoria
+    let senha = req.params.senha
 
     database.run(`insert into categoria (nome_categoria) values ('${nome_categoria}')`, function(erro){
         if(erro){
             res.send(erro)
         }
         else{
-            res.redirect("/categoria")
+            res.redirect(`/categoria/${senha}`)
         }
     })
 })

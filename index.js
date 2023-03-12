@@ -73,15 +73,15 @@ app.get("/admin/entrar", router)
 app.post("/logar/admin", router)
 
         //insert
-app.post("/cad_produto_set", router)
+app.post("/cad_produto_set/:senha", router)
         //select
 app.get("/admin_produto/:senha", router)
         //delete
-app.get("/admin_produto_excluir/:id", router)
+app.get("/admin_produto_excluir/:id/:senha", router)
         //select -> update
 app.get("/admin_produto_att/:id/:senha", router)
         //update
-app.post("/admin_produto_set_update/:id", router)
+app.post("/admin_produto_set_update/:id/:senha", router)
     //crud - produto(fim)
 
     //crud - user(inicio)
@@ -97,11 +97,11 @@ app.post("/att_user/:token_user", router)
         //select
 app.get("/categoria/:senha", router)
         //update
-app.post("/att_categoria/:id_categoria", router)
+app.post("/att_categoria/:id_categoria/:senha", router)
         //delete
-app.get("/excluir_categoria/:id_categoria", router)
+app.get("/excluir_categoria/:id_categoria/:senha", router)
         //insert
-app.post("/add_categoria", router)
+app.post("/add_categoria/:senha", router)
    //crud -categoria (fim)
 
 //user - entrar

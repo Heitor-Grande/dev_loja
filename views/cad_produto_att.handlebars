@@ -18,12 +18,11 @@
             <li><a href="/admin_produto/{{senha}}">PRODUTOS CADASTRADOS</a></li>
             <li><a href="/categoria/{{senha}}">CATEGORIAS</a></li>
             <li><a href="/models/teste.db">FAZER BACKUP</a></li>
-            {{/each}}
         </ul>
     </header>
     
-    {{#each produto}}
-    <form action="/admin_produto_set_update/{{id_produto}}" method="post" enctype="multipart/form-data">
+    {{#each ../produto}}
+    <form action="/admin_produto_set_update/{{id_produto}}/{{../senha}}" method="post" enctype="multipart/form-data">
             <p>PREENCHA TODOS OS CAMPOS PARA VALIDAR CORRETAMENTE O CADASTRO.</p>
             <h3>NOME:</h3>
             <input type="text" name="nome_produto" value="{{nome_produto}}">
@@ -50,6 +49,7 @@
             <input type="text" name="quantidade" id="quant" value="{{quantidade}}">
             <button class="btn btn-primary" id="button_convert">SALVAR EDIÇÃO</button>
     </form>
+    {{/each}}
     {{/each}}
     <footer>
             <p>ASSISTÊNCIA: (11)97471-8743</p>

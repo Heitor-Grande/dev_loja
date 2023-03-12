@@ -31,8 +31,8 @@
                     <input type="text" value="{{categoria_produto}}" disabled>
                     {{#each ../admin}}
                     <a href="/admin_produto_att/{{../id_produto}}/{{senha}}" class="btn btn-primary">EDITAR</a>
+                    <a href="/admin_produto_excluir/{{id_produto}}/{{senha}}" class="btn btn-primary">EXCLUIR</a>
                     {{/each}}
-                    <a href="/admin_produto_excluir/{{id_produto}}" class="btn btn-primary">EXCLUIR</a>
             </div>
             {{/each}}
     </main>

@@ -15,24 +15,24 @@
             <li><a href="/admin_produto/{{senha}}">PRODUTOS CADASTRADOS</a></li>
             <li><a href="/cad_produto/{{senha}}">CADASTRAR NOVO PRODUTO</a></li>
             <li><a href="/models/teste.db">FAZER BACKUP</a></li>
-            {{/each}}
         </ul>
     </header>
 
         <main>
-            <form action="/add_categoria" method="post">
+            <form action="/add_categoria/{{senha}}" method="post">
             <h3>ADICIONAR CATEGORIA:</h3>
                 <input type="text" name="nome_categoria">
                 <button class="btn btn-primary">ADICIONAR</button>
             </form>
             <h3>CATEGORIAS CADASTRADAS:</h3>
-            {{#each categoria}}
-            <form action="/att_categoria/{{id_categoria}}" method="post">
+            {{#each ../categoria}}
+            <form action="/att_categoria/{{id_categoria}}/{{../senha}}" method="post">
             <input type="hidden" name="categoria_antiga" value="{{nome_categoria}}">
             <input type="text" value="{{nome_categoria}}" name="nome_categoria">
             <button class="btn btn-primary">SALVAR</button>
-            <a href="/excluir_categoria/{{id_categoria}}" class="btn btn-primary">EXCLUIR</a>
+            <a href="/excluir_categoria/{{id_categoria}}/{{../senha}}" class="btn btn-primary">EXCLUIR</a>
             </form>
+            {{/each}}
             {{/each}}
 
         </main>

@@ -18,11 +18,10 @@
             <li><a href="/admin_produto/{{senha}}">PRODUTOS CADASTRADOS</a></li>
             <li><a href="/categoria/{{senha}}">CATEGORIAS</a></li>
             <li><a href="/models/teste.db">FAZER BACKUP</a></li>
-            {{/each}}
         </ul>
     </header>
     
-    <form action="/cad_produto_set" method="post" enctype="multipart/form-data">
+    <form action="/cad_produto_set/{{senha}}" method="post" enctype="multipart/form-data">
             <p>PREENCHA TODOS OS CAMPOS PARA VALIDAR CORRETAMENTE O CADASTRO.</p>
             <h3>NOME:</h3>
             <input type="text" name="nome_produto">
@@ -34,7 +33,7 @@
             <input type="text" name="descricao_produto">
             <h3>CATEGORIA:</h3>
             <select name="categoria_produto" id="">
-                    {{#each categoria}}
+                    {{#each ../categoria}}
                         <option value="{{nome_categoria}}">{{nome_categoria}}</option>
                     {{/each}}
             </select>
@@ -48,6 +47,7 @@
             <input type="text" name="quantidade" id="quant">
             <button class="btn btn-primary" id="button_convert">CADASTRAR</button>
     </form>
+            {{/each}}
 
     <footer>
             <p>ASSISTÊNCIA: (11)97471-8743</p>

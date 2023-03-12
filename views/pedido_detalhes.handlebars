@@ -9,12 +9,14 @@
 </head>
 <body>
         <main>
-            <h2>Detalhes do seu pedido:</h2>
+            <div class="ppdido">
+                <h2>Detalhes do seu pedido:</h2>
                 {{#each pedido}}
                     <p>Nome do produto: {{item_pedido}}</p>
                     <p>Preço por unidade: R${{preco_item}}</p>
                     <p>Unidades: {{quantidade_item}}</p>
                 {{/each}}
+            </div>
         </main>
 </body>
 </html>
